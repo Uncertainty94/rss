@@ -8,16 +8,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import ru.vsu.cs.rss.WebsiteObject;
+import ru.vsu.cs.rss.websites.WebsiteObject1;
 
 /**
  * Created by max on 21.12.2014.
  */
 public class FindFeedParser {
 
-    public ArrayList<WebsiteObject> records = new ArrayList<WebsiteObject>();
+    public ArrayList<WebsiteObject1> records = new ArrayList<>();
 
-    public ArrayList<WebsiteObject> parse(String json) throws JSONException {
+    public ArrayList<WebsiteObject1> parse(String json) throws JSONException {
 
         JSONObject response = new JSONObject(json).getJSONObject("responseData");
 
@@ -25,7 +25,7 @@ public class FindFeedParser {
 
         for (int i = 0; i < dataArray.length(); i++){
 
-            WebsiteObject websiteObject = new WebsiteObject();
+            WebsiteObject1 websiteObject = new WebsiteObject1();
 
             StringBuilder data = new StringBuilder();
 
