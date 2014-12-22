@@ -3,17 +3,18 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
-        android:focusable="false"
-        android:id="@+id/website_item_title"
+        android:id="@+id/news_item_title"
         android:singleLine="true"
         android:lines="1"
         android:scrollHorizontally="true"
         android:ellipsize="marquee"
+        android:focusable="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#fff7ffca"
-        android:text="@string/titleSite"
+        android:text="@string/titleNews"
         android:textIsSelectable="true"
         android:textSize="18sp"
         android:isScrollContainer="false"
@@ -22,23 +23,16 @@
 
 
     <TextView
-        android:focusable="false"
+        android:singleLine="true"
         android:lines="1"
+        android:scrollHorizontally="true"
+        android:ellipsize="marquee"
+        android:focusable="false"
         android:paddingLeft="10dp"
-        android:id="@+id/website_item_link"
+        android:id="@+id/news_item_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/linkSite"
+        android:text="@string/authorNewsList"
         android:textSize="10sp"
-        android:textColor="#ffffff"
-        android:autoLink="web"/>
-
-    <TextView
-        android:id="@+id/website_item_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/webDescription"
-        android:textSize="12sp"
         android:textColor="#ffffff"/>
-
 </LinearLayout>

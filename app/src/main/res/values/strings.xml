@@ -8,5 +8,7 @@
     <string name="linkSite">link</string>
     <string name="titleSite">TitleSite</string>
     <string name="webDescription">Description</string>
+    <string name="authorNewsList">author</string>
+    <string name="titleNews">titleNews</string>
 
 </resources>

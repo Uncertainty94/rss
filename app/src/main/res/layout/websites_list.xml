@@ -42,7 +42,9 @@
 
     <ListView android:id="@+id/website_layout_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:focusable="true"
+        />
     </RelativeLayout>
 
 

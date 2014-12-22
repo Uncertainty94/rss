@@ -1,4 +1,4 @@
-package ru.vsu.cs.rss;
+package ru.vsu.cs.rss.parsers;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
+import ru.vsu.cs.rss.WebsiteObject;
 
 /**
  * Created by max on 21.12.2014.
