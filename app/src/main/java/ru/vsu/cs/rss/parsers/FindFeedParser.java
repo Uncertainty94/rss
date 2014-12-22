@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import ru.vsu.cs.rss.websites.WebsiteObject;
+import ru.vsu.cs.rss.web.WebsiteObject;
 
 /**
  * Created by max on 21.12.2014.
