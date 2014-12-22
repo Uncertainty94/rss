@@ -16,13 +16,15 @@
             android:id="@+id/website_search_layout_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="#ffffff"/>
 
         <Button
             android:id="@+id/website_search_layout_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/findWeb"/>
+            android:text="@string/findWeb"
+            android:textColor="#ffffff"/>
 
         </LinearLayout>
 
