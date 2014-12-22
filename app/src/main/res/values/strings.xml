@@ -4,5 +4,9 @@
     <string name="app_name">Rss</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="findWeb">Find websites</string>
+    <string name="linkSite">link</string>
+    <string name="titleSite">TitleSite</string>
+    <string name="webDescription">Description</string>
 
 </resources>
