@@ -51,6 +51,8 @@ public class WebsitesActivity extends ActionBarActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                adapter = new WebListAdapter(WebsitesActivity.this, R.layout.website_list_item, new ArrayList<WebsiteObject>());
+                websitesList.setAdapter(adapter);
                 MyTask mt = new MyTask();
                 mt.execute();
             }
@@ -78,11 +80,6 @@ public class WebsitesActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void findWebClick (View view){
-        MyTask mt = new MyTask();
-        mt.execute();
     }
 
     class MyTask extends AsyncTask<Void, String, String> {
