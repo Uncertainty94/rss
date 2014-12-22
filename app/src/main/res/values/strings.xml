@@ -10,5 +10,8 @@
     <string name="webDescription">Description</string>
     <string name="authorNewsList">author</string>
     <string name="titleNews">titleNews</string>
+    <string name="title">Title</string>
+    <string name="author">author</string>
+    <string name="date">date</string>
 
 </resources>

@@ -59,7 +59,7 @@ public class WebsitesActivity extends ActionBarActivity {
             public void onClick(View v) {
                 adapter = new WebListAdapter(WebsitesActivity.this, R.layout.website_list_item, new ArrayList<WebsiteObject>());
                 websitesList.setAdapter(adapter);
-                MyTask mt = new MyTask();
+                FindFeed mt = new FindFeed();
                 mt.execute();
             }
         });
@@ -88,7 +88,7 @@ public class WebsitesActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    class MyTask extends AsyncTask<Void, String, String> {
+    class FindFeed extends AsyncTask<Void, String, String> {
 
         String searchItem;
 
@@ -181,7 +181,9 @@ public class WebsitesActivity extends ActionBarActivity {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
                         Intent intent = new Intent(WebsitesActivity.this, NewsActivity.class);
-                        intent.putExtra(NewsActivity.EXTRA_URL, adapter.getItem(pos));
+//                        intent.putExtra(NewsActivity.EXTRA_URL, adapter.getItem(pos).getUrl());
+                        NewsActivity.EXTRA_URL = adapter.getItem(pos).getUrl();
+//                        Toast.makeText(WebsitesActivity.this, adapter.getItem(pos).getUrl(), Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
                 });

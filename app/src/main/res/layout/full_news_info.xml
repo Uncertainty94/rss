@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/full_feed_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:singleLine="true"
+        android:lines="1"
+        android:scrollHorizontally="true"
+        android:ellipsize="marquee"
+        android:textColor="#fff7ffca"
+        android:textIsSelectable="true"
+        android:textSize="18sp"
+        android:isScrollContainer="false"
+        android:marqueeRepeatLimit="marquee_forever"/>
+
+    <TextView
+        android:id="@+id/full_feed_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/author"
+        android:textSize="15sp"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/full_feed_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:textSize="12sp"
+        android:textColor="#ffffff"/>
+
+
+    <TextView
+        android:id="@+id/full_feed_link"
+        android:lines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:textSize="10sp"
+        android:autoLink="web"
+        android:textColor="#ffffff"/>
+
+
+    <CheckBox
+        android:clickable="true"
+        android:button="@android:drawable/btn_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/accent_material_light"
+        android:layout_gravity="center_horizontal"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/full_feed_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+        </ScrollView>
+
+
+</LinearLayout>

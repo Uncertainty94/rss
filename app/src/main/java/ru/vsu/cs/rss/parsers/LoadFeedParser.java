@@ -1,5 +1,7 @@
 package ru.vsu.cs.rss.parsers;
 
+import android.text.Html;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,11 +31,11 @@ public class LoadFeedParser {
 
             JSONObject newsInfo = dataArray.getJSONObject(i);
 
-            newsObject.setTitle(newsInfo.getString("title"));
+            newsObject.setTitle(Html.fromHtml(newsInfo.getString("title")).toString());
             newsObject.setLink(newsInfo.getString("link"));
-            newsObject.setAuthor(newsInfo.getString("author"));
-            newsObject.setPublishedDate(newsInfo.getString("publishedDate"));
-            newsObject.setContent(newsInfo.getString("content"));
+            newsObject.setAuthor(Html.fromHtml(newsInfo.getString("author")).toString());
+            newsObject.setPublishedDate(Html.fromHtml(newsInfo.getString("publishedDate")).toString());
+            newsObject.setContent(Html.fromHtml(newsInfo.getString("content")).toString());
 
 
             records.add(newsObject);

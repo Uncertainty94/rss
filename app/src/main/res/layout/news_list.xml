@@ -5,13 +5,13 @@
 
 
     <ProgressBar
+        android:id="@+id/news_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/list_progress_bar"
         android:layout_gravity="center"/>
 
 
-    <ListView android:id="@+id/website_layout_list"
+    <ListView android:id="@+id/news_layout_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

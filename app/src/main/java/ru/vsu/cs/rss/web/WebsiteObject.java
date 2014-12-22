@@ -1,23 +1,19 @@
 package ru.vsu.cs.rss.web;
 
 import java.io.Serializable;
-import java.net.URL;
 
 /**
  * Created by max on 22.12.2014.
  */
 public class WebsiteObject implements Serializable {
 
-    private String title, link, content;
+    private String title, link, content, url;
 
-
-    private URL url;
-
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(URL url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 

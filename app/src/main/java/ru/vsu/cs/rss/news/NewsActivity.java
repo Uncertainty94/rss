@@ -2,6 +2,7 @@ package ru.vsu.cs.rss.news;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -32,20 +34,24 @@ import ru.vsu.cs.rss.parsers.LoadFeedParser;
  */
 public class NewsActivity extends Activity {
 
-    public static final String EXTRA_URL = "url";
+    public static String EXTRA_URL;
 
     private ProgressBar progressBar;
-    private ListView websitesList;
+    private ListView newsList;
 
     NewsListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.websites_list);
-        progressBar = (ProgressBar) findViewById(R.id.list_progress_bar);
-        websitesList = (ListView) findViewById(R.id.website_layout_list);
+        setContentView(R.layout.news_list);
+        progressBar = (ProgressBar) findViewById(R.id.news_progress_bar);
+        newsList = (ListView) findViewById(R.id.news_layout_list);
         progressBar.setVisibility(View.INVISIBLE);
+//        Toast.makeText(NewsActivity.this, EXTRA_URL, Toast.LENGTH_SHORT).show();
+        LoadFeed loadFeed = new LoadFeed();
+        loadFeed.execute();
+
     }
 
 
@@ -71,7 +77,7 @@ public class NewsActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    class MyTask extends AsyncTask<Void, String, String> {
+    class LoadFeed extends AsyncTask<Void, String, String> {
 
         String searchItem;
 
@@ -138,7 +144,7 @@ public class NewsActivity extends Activity {
             super.onPostExecute(result);
             progressBar.setVisibility(View.INVISIBLE);
 
-//            Toast.makeText(WebsitesActivity.this, result, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(NewsActivity.this, result, Toast.LENGTH_SHORT).show();
             if (!result.isEmpty()) {
 
                 LoadFeedParser loadFeedParser = new LoadFeedParser();
@@ -151,17 +157,17 @@ public class NewsActivity extends Activity {
                     e.printStackTrace();
                     Toast.makeText(NewsActivity.this, "Trouble with parse", Toast.LENGTH_SHORT).show();
                 }
-
-                adapter = new NewsListAdapter(NewsActivity.this, R.layout.website_list_item, list);
-                websitesList.setAdapter(adapter);
-//                websitesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-//                        Intent intent = new Intent(WebsitesActivity.this, FullInfoActivity.class);
-//                        intent.putExtra(FullInfoActivity.EXTRA_BOOK, adapter.getItem(pos));
-//                        startActivity(intent);
-//                    }
-//                });
+                adapter = new NewsListAdapter(NewsActivity.this, R.layout.news_item, list);
+                newsList.setAdapter(adapter);
+                newsList.setSelected(true);
+                newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                        Intent intent = new Intent(NewsActivity.this, FullNewsInfo.class);
+                        intent.putExtra(FullNewsInfo.EXTRA_NEWS, adapter.getItem(pos));
+                        startActivity(intent);
+                    }
+                });
             } else {
                 Toast.makeText(NewsActivity.this, "Empty result", Toast.LENGTH_SHORT).show();
             }

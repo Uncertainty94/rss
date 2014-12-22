@@ -32,7 +32,6 @@ public class WebListAdapter extends ArrayAdapter<WebsiteObject> {
         } else {
             infoFromActivity = (GetInfoFromActivity) convertView.getTag();
         }
-
         infoFromActivity.set(getItem(position).getTitle(),
                 getItem(position).getLink(),
                 getItem(position).getContent());

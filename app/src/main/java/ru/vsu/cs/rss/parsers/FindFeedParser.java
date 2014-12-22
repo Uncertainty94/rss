@@ -1,11 +1,11 @@
 package ru.vsu.cs.rss.parsers;
 
+import android.text.Html;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import ru.vsu.cs.rss.web.WebsiteObject;
@@ -31,14 +31,9 @@ public class FindFeedParser {
 
             JSONObject websiteInfo = dataArray.getJSONObject(i);
 
-            try {
-                websiteObject.setUrl(new URL(websiteInfo.getString("url")));
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-
-            websiteObject.setTitle(websiteInfo.getString("title"));
-            websiteObject.setContent(websiteInfo.getString("contentSnippet"));
+            websiteObject.setUrl(websiteInfo.getString("url"));
+            websiteObject.setTitle(Html.fromHtml(websiteInfo.getString("title")).toString());
+            websiteObject.setContent(Html.fromHtml(websiteInfo.getString("contentSnippet")).toString());
             websiteObject.setLink(websiteInfo.getString("link"));
 
 
