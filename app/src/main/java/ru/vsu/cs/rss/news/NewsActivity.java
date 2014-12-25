@@ -24,9 +24,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import ru.vsu.cs.rss.R;
+import ru.vsu.cs.rss.db.DBHelper;
+import ru.vsu.cs.rss.favorite.FavoriteActivity;
 import ru.vsu.cs.rss.parsers.LoadFeedParser;
 
 /**
@@ -70,7 +73,9 @@ public class NewsActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.favorite_feeds) {
+            Intent intent = new Intent(NewsActivity.this, FavoriteActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -158,16 +163,26 @@ public class NewsActivity extends Activity {
                     Toast.makeText(NewsActivity.this, "Trouble with parse", Toast.LENGTH_SHORT).show();
                 }
                 adapter = new NewsListAdapter(NewsActivity.this, R.layout.news_item, list);
+                if (adapter != null){
                 newsList.setAdapter(adapter);
                 newsList.setSelected(true);
                 newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                        DBHelper helper = DBHelper.getInstance(NewsActivity.this);
+                        try {
+                            helper.getFeedObjectDao().update(adapter.getItem(pos));
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+
                         Intent intent = new Intent(NewsActivity.this, FullNewsInfo.class);
                         intent.putExtra(FullNewsInfo.EXTRA_NEWS, adapter.getItem(pos));
                         startActivity(intent);
                     }
-                });
+                });} else {
+                    Toast.makeText(NewsActivity.this, "Null result", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 Toast.makeText(NewsActivity.this, "Empty result", Toast.LENGTH_SHORT).show();
             }

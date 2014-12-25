@@ -1,12 +1,15 @@
 package ru.vsu.cs.rss.news;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import ru.vsu.cs.rss.R;
+import ru.vsu.cs.rss.favorite.FavoriteActivity;
 
 /**
  * Created by max on 22.12.2014.
@@ -14,6 +17,9 @@ import ru.vsu.cs.rss.R;
 public class FullNewsInfo extends Activity {
 
     public static final String EXTRA_NEWS = "new";
+
+
+    private CheckBox checkBox;
 
     public TextView title;
     public TextView author;
@@ -28,6 +34,7 @@ public class FullNewsInfo extends Activity {
 
         NewsObject extraBook = (NewsObject) getIntent().getSerializableExtra(EXTRA_NEWS);
 
+        checkBox = (CheckBox) findViewById(R.id.full_info_check);
         title = (TextView) findViewById(R.id.full_feed_title);
         title.setText(extraBook.getTitle());
         title.setSelected(true);
@@ -48,8 +55,10 @@ public class FullNewsInfo extends Activity {
         link = (TextView) findViewById(R.id.full_feed_link);
         link.setText(extraBook.getLink());
 
-
     }
+
+
+
 
 
     @Override
@@ -65,7 +74,9 @@ public class FullNewsInfo extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.favorite_feeds) {
+            Intent intent = new Intent(FullNewsInfo.this, FavoriteActivity.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -38,6 +38,7 @@ public class LoadFeedParser {
             newsObject.setContent(Html.fromHtml(newsInfo.getString("content")).toString());
 
 
+
             records.add(newsObject);
         }
 

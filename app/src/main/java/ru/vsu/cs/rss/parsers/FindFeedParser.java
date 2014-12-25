@@ -37,6 +37,7 @@ public class FindFeedParser {
             websiteObject.setLink(websiteInfo.getString("link"));
 
 
+
             records.add(websiteObject);
         }
 

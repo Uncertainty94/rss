@@ -29,6 +29,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import ru.vsu.cs.rss.R;
+import ru.vsu.cs.rss.favorite.FavoriteActivity;
 import ru.vsu.cs.rss.news.NewsActivity;
 import ru.vsu.cs.rss.parsers.FindFeedParser;
 
@@ -81,7 +82,9 @@ public class WebsitesActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.favorite_feeds) {
+            Intent intent = new Intent(WebsitesActivity.this, FavoriteActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -109,6 +112,7 @@ public class WebsitesActivity extends ActionBarActivity {
                     progressBar.setVisibility(View.VISIBLE);
                 }
             }
+
 
         }
 

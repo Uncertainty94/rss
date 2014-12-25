@@ -32,6 +32,7 @@ public class NewsListAdapter extends ArrayAdapter<NewsObject> {
             infoFromActivity = (GetInfoFromActivity) convertView.getTag();
         }
 
+
         infoFromActivity.set(getItem(position).getTitle(),
                 getItem(position).getAuthor());
         return convertView;
