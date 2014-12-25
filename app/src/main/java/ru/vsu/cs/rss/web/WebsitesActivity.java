@@ -55,6 +55,7 @@ public class WebsitesActivity extends ActionBarActivity {
         websitesList = (ListView) findViewById(R.id.website_layout_list);
         progressBar.setVisibility(View.INVISIBLE);
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -79,5 +79,13 @@ public class NewsObject implements Serializable {
     public void setPublishedDate(String publishedDate) {
         this.publishedDate = publishedDate;
     }
+
+    public boolean equals(NewsObject o) {
+        if (this.title.equals(o.getTitle())){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 

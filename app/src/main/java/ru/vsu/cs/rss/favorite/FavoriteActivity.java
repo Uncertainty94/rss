@@ -11,10 +11,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import ru.vsu.cs.rss.R;
 import ru.vsu.cs.rss.db.DBHelper;
 import ru.vsu.cs.rss.news.FullNewsInfo;
+import ru.vsu.cs.rss.news.NewsObject;
 
 /**
  * Created by max on 23.12.2014.
@@ -31,6 +34,17 @@ public class FavoriteActivity extends Activity {
 
         setContentView(R.layout.favorite_feeds_list);
         favoriteList = (ListView) findViewById(R.id.favorite_list);
+        DBHelper helper = DBHelper.getInstance(FavoriteActivity.this);
+        List<NewsObject> list = new ArrayList<>();
+        try {
+            list = helper.getFeedObjectDao().queryForAll();
+            Toast.makeText(FavoriteActivity.this, helper.getFeedObjectDao().getCount() + " " , Toast.LENGTH_SHORT).show();
+//            helper.getFeedObjectDao().delete(list);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        adapter = new FavoriteAdapter(FavoriteActivity.this, R.layout.favorite_feeds_item, list);
+        favoriteList.setAdapter(adapter);
         favoriteList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
@@ -39,13 +53,7 @@ public class FavoriteActivity extends Activity {
                 startActivity(intent);
             }
         });
-        DBHelper helper = DBHelper.getInstance(FavoriteActivity.this);
 
-        try {
-            Toast.makeText(FavoriteActivity.this, helper.getFeedObjectDao().getCount() + " " , Toast.LENGTH_SHORT).show();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
 

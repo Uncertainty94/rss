@@ -16,7 +16,7 @@ public class FeedObjectDao extends BaseDaoImpl<NewsObject, Integer> {
         super(connectionSource, NewsObject.class);
     }
 
-    public NewsObject getNews(String name) throws SQLException {
+    public NewsObject getNewsByTitle(String name) throws SQLException {
         NewsObject obj = queryBuilder().where().eq(NewsObject.FIELD_TITLE, name).queryForFirst();
         return obj;
     }

@@ -3,5 +3,33 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/favorite_item_title"
+        android:singleLine="true"
+        android:lines="1"
+        android:scrollHorizontally="true"
+        android:ellipsize="marquee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff7ffca"
+        android:focusable="false"
+        android:text="@string/titleNews"
+        android:textIsSelectable="true"
+        android:textSize="22sp"
+        android:isScrollContainer="false"
+        android:marqueeRepeatLimit="marquee_forever"/>
 
+
+    <TextView
+        android:singleLine="true"
+        android:lines="1"
+        android:scrollHorizontally="true"
+        android:ellipsize="marquee"
+        android:paddingLeft="10dp"
+        android:id="@+id/favorite_item_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/authorNewsList"
+        android:textSize="15sp"
+        android:textColor="#ffffff"/>
 </LinearLayout>

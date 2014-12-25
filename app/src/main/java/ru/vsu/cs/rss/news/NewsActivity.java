@@ -164,23 +164,26 @@ public class NewsActivity extends Activity {
                 }
                 adapter = new NewsListAdapter(NewsActivity.this, R.layout.news_item, list);
                 if (adapter != null){
-                newsList.setAdapter(adapter);
-                newsList.setSelected(true);
-                newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                        DBHelper helper = DBHelper.getInstance(NewsActivity.this);
-                        try {
-                            helper.getFeedObjectDao().update(adapter.getItem(pos));
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
+                    newsList.setAdapter(adapter);
+                    newsList.setSelected(true);
+                    newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                            try {
+                                DBHelper helper = DBHelper.getInstance(NewsActivity.this);
 
-                        Intent intent = new Intent(NewsActivity.this, FullNewsInfo.class);
-                        intent.putExtra(FullNewsInfo.EXTRA_NEWS, adapter.getItem(pos));
-                        startActivity(intent);
-                    }
-                });} else {
+                                helper.getFeedObjectDao().createOrUpdate(adapter.getItem(pos));
+
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+
+                            Intent intent = new Intent(NewsActivity.this, FullNewsInfo.class);
+                            intent.putExtra(FullNewsInfo.EXTRA_NEWS, adapter.getItem(pos));
+                            startActivity(intent);
+                        }
+                    });
+                } else {
                     Toast.makeText(NewsActivity.this, "Null result", Toast.LENGTH_SHORT).show();
                 }
             } else {

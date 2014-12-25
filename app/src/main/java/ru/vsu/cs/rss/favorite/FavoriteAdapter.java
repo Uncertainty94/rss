@@ -27,7 +27,7 @@ public class FavoriteAdapter extends ArrayAdapter<NewsObject> {
         GetInfoFromActivity infoFromActivity;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.news_item, null);
+            convertView = inflater.inflate(R.layout.favorite_feeds_item, null);
             infoFromActivity = new GetInfoFromActivity(convertView);
             convertView.setTag(infoFromActivity);
         } else {
@@ -44,8 +44,8 @@ public class FavoriteAdapter extends ArrayAdapter<NewsObject> {
         TextView author;
 
         private GetInfoFromActivity(View view) {
-            this.title   = (TextView) view.findViewById(R.id.news_item_title);
-            this.author   = (TextView) view.findViewById(R.id.news_item_author);
+            this.title   = (TextView) view.findViewById(R.id.favorite_item_title);
+            this.author   = (TextView) view.findViewById(R.id.favorite_item_author);
         }
 
         public void set(String title, String author) {
