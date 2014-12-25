@@ -14,9 +14,9 @@
         android:ellipsize="marquee"
         android:textColor="#fff7ffca"
         android:textIsSelectable="true"
-        android:textSize="18sp"
         android:isScrollContainer="false"
-        android:marqueeRepeatLimit="marquee_forever"/>
+        android:marqueeRepeatLimit="marquee_forever"
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/full_feed_author"
@@ -47,6 +47,7 @@
 
 
     <CheckBox
+        android:id="@+id/full_info_check"
         android:clickable="true"
         android:button="@android:drawable/btn_star"
         android:layout_width="wrap_content"

@@ -13,5 +13,6 @@
     <string name="title">Title</string>
     <string name="author">author</string>
     <string name="date">date</string>
+    <string name="favorite">favorite</string>
 
 </resources>
